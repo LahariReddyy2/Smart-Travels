@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART TRAVELS - Tours, Attractions & Activities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gyg-orange: #ff541c;
+            --gyg-orange-dark: #e84d18;
+            --gyg-dark-gray: #1b1c1d;
+            --gyg-light-gray: #f7f9fc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gyg-light-gray);
+            color: var(--gyg-dark-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1770&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .gyg-card-icon {
+            color: var(--gyg-orange);
+            background-color: #fff;
+            padding: 24px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gyg-card:hover .gyg-card-icon {
+            transform: scale(1.1);
+        }
+        
+        .gyg-orange-bg {
+            background-color: var(--gyg-orange);
+        }
+
+        .gyg-orange-text {
+            color: var(--gyg-orange);
+        }
+
+        .gyg-orange-hover:hover {
+            background-color: var(--gyg-orange-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gyg-orange-text">SMART TRAVELS</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#offers" class="text-gray-600 hover:gyg-orange-text transition duration-300">Offers</a>
+                <a href="#destinations" class="text-gray-600 hover:gyg-orange-text transition duration-300">Destinations</a>
+                <a href="#artisans" class="text-gray-600 hover:gyg-orange-text transition duration-300">Local Artisans</a>
+                <a href="#my-trips" class="text-gray-600 hover:gyg-orange-text transition duration-300">My Trips</a>
+            </div>
+            <button class="md:hidden text-gray-600 hover:gyg-orange-text" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <a href="#offers" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Offers</a>
+            <a href="#destinations" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Destinations</a>
+            <a href="#artisans" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Local Artisans</a>
+            <a href="#my-trips" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">My Trips</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-section" class="relative hero-image-container flex items-center justify-center">
+            <div class="hero-overlay"></div>
+            <div class="z-10 text-white px-6 w-full max-w-5xl">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-4 drop-shadow-lg">Tours, attractions, and activities</h1>
+                <p class="text-lg md:text-xl font-light text-center mb-8 drop-shadow">Find local guides, unique experiences, and things to do worldwide.</p>
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-lg w-full">
+                    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="flex-1">
+                            <label class="block text-gray-400 text-sm mb-1">Destination</label>
+                            <input type="text" placeholder="e.g., Delhi" class="p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-gray-400 text-sm mb-1">Dates</label>
+                            <input type="text" placeholder="Select dates" class="p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-gray-400 text-sm mb-1">Travelers</label>
+                            <input type="text" placeholder="1 traveler" class="p-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+                        <button class="gyg-orange-bg text-white font-bold py-3 px-6 rounded-lg hover:gyg-orange-hover transition duration-300">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="offers" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Special Offers & Deals</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center gyg-card">
+                    <i class="fas fa-ticket-alt text-6xl gyg-card-icon"></i>
+                    <h3 class="text-xl font-semibold mt-4">Free Cancellation</h3>
+                    <p class="text-gray-500 mt-2">Book with confidence and get a full refund if you cancel up to 24 hours in advance.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center gyg-card">
+                    <i class="fas fa-mobile-alt text-6xl gyg-card-icon"></i>
+                    <h3 class="text-xl font-semibold mt-4">Mobile Vouchers</h3>
+                    <p class="text-gray-500 mt-2">Enjoy instant confirmation and use your mobile phone as your ticket.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center gyg-card">
+                    <i class="fas fa-star text-6xl gyg-card-icon"></i>
+                    <h3 class="text-xl font-semibold mt-4">Verified Reviews</h3>
+                    <p class="text-gray-500 mt-2">Browse thousands of authentic traveler reviews before you book.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinations" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Popular Destinations</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-landmark text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">New Delhi</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-water text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">Goa</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-mountain text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">Ooty</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-city text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">Hyderabad</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-sun text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">Kerala</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-4 flex flex-col items-center text-center transform hover:scale-105 transition duration-300">
+                    <i class="fas fa-map-marked-alt text-5xl gyg-orange-text mb-2"></i>
+                    <h3 class="text-base font-semibold">Karnataka</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="artisans" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Support Local Artisans</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
+                    <i class="fas fa-palette text-6xl gyg-orange-text mb-4"></i>
+                    <h3 class="text-xl font-semibold">Pottery</h3>
+                    <p class="text-gray-500 mt-2">Discover hand-crafted pottery from local communities.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
+                    <i class="fas fa-hand-sparkles text-6xl gyg-orange-text mb-4"></i>
+                    <h3 class="text-xl font-semibold">Handicrafts</h3>
+                    <p class="text-gray-500 mt-2">Find unique, artisan-made souvenirs and gifts.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
+                    <i class="fas fa-shirt text-6xl gyg-orange-text mb-4"></i>
+                    <h3 class="text-xl font-semibold">Textiles</h3>
+                    <p class="text-gray-500 mt-2">Find unique, locally woven textiles and fabrics.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="trip-planner" class="container mx-auto px-6 py-16">
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Quick and easy trip planner</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="col-span-1">
+                        <label for="from-place" class="block text-gray-500 font-medium mb-2">From</label>
+                        <input type="text" id="from-place" placeholder="e.g., Hyderabad" class="p-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition duration-200 bg-white">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="destination" class="block text-gray-500 font-medium mb-2">To</label>
+                        <input type="text" id="destination" placeholder="e.g., Ooty, India" class="p-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition duration-200 bg-white">
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <div>
+                        <label for="trip-option" class="block text-gray-500 font-medium mb-2">Trip Option</label>
+                        <select id="trip-option" class="p-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition duration-200 bg-white">
+                            <option value="round_trip">Round Trip</option>
+                            <option value="one_way">One Way</option>
+                            <option value="multi_city">Multi-city</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="trip-type" class="block text-gray-500 font-medium mb-2">Trip Type</label>
+                        <select id="trip-type" class="p-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition duration-200 bg-white">
+                            <option value="solo">Solo Trip</option>
+                            <option value="family">Family Trip</option>
+                            <option value="friends">Friends Getaway</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="plan-trip-button" class="gyg-orange-bg text-white font-bold py-3 px-12 rounded-full shadow-lg hover:gyg-orange-hover transition duration-300 transform hover:scale-105">
+                        Create Trip
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="my-trips" class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">My Trips</h2>
+            <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-8">
+                <button class="filter-btn gyg-orange-bg text-white px-4 py-2 rounded-full font-medium hover:gyg-orange-hover transition duration-300" data-filter="all">All Trips</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition duration-300" data-filter="solo">Solo Trips</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition duration-300" data-filter="family">Family Trips</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-gray-300 transition duration-300" data-filter="friends">Friends Trips</button>
+            </div>
+            <div id="trips-list" class="grid lg:grid-cols-2 gap-8">
+                </div>
+        </section>
+        
+        <section id="trip-details" class="hidden container mx-auto px-6 py-16">
+            </section>
+
+    </main>
+
+    <footer class="bg-gyg-dark-gray text-gray-400 py-10 mt-16 rounded-t-3xl shadow-2xl">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 SMART TRAVELS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple "backend" data storage in a JavaScript array
+        let trips = [{
+            id: 1,
+            from: 'Hyderabad',
+            destination: 'Andhra Pradesh',
+            budget: 5000,
+            tripType: 'family',
+            expenses: [{
+                name: "Train to Vijayawada",
+                cost: 350
+            }, {
+                name: "Hotel in Guntur",
+                cost: 2000
+            }, {
+                name: "Bus to Vizag",
+                cost: 700
+            }, {
+                name: "Food & Drinks",
+                cost: 1200
+            }],
+            details: {
+                hotel: {
+                    name: "Hotel Siddhartha, Guntur",
+                    type: "Hotel",
+                    image: "https://images.unsplash.com/photo-1618773959953-b09e6fd561c3?q=80&w=1770&auto=format&fit=crop",
+                    description: "A comfortable and well-located hotel in Guntur, a perfect base for exploring the region.",
+                    timings: "Check-in: 1:00 PM | Check-out: 12:00 PM",
+                    phone: "91-999-999-9999"
+                },
+                history: {
+                    facts: [
+                        "Andhra Pradesh has a rich history with many ancient sites and kingdoms. The region was home to the Satavahana dynasty.",
+                        "It later became a major center for Buddhism, as seen in places like Amaravathi. The state is known for its beautiful coastline and historic temples."
+                    ],
+                    image: "https://images.unsplash.com/photo-1548013146-72479768b8fb?q=80&w=1614&auto=format&fit=crop"
+                },
+                transport: {
+                    options: [
+                        { name: "Train", icon: "fas fa-train", description: "Take an overnight train from Hyderabad to major cities like Vijayawada or Visakhapatnam.", timings: "10:30 PM - 8:00 AM", phone: "123-456-7890" },
+                        { name: "Bus", icon: "fas fa-bus", description: "Several private and government buses run frequently on this route.", timings: "Every 2-3 hours", phone: "123-456-7890" },
+                        { name: "Car", icon: "fas fa-car", description: "Rent a car for a scenic road trip.", timings: "Flexible", phone: "987-654-3210" }
+                    ]
+                },
+                suggestions: [
+                    { name: "Borra Caves", image: "https://images.unsplash.com/photo-1615206232537-83d81b9e28e4?q=80&w=1770&auto=format&fit=crop", description: "Explore the stunning limestone formations of the ancient Borra Caves." },
+                    { name: "Vizag Beach", image: "https://images.unsplash.com/photo-1628169229986-be8f8ed97d70?q=80&w=1632&auto=format&fit=crop", description: "Relax on the beautiful, clean beaches of Visakhapatnam." },
+                    { name: "Statue of Amaravati", image: "https://images.unsplash.com/photo-1563456381-0610f63b06e9?q=80&w=1770&auto=format&fit=crop", description: "Visit the historic statue and ancient Buddhist site of Amaravati." }
+                ],
+                weather: "Hot and Humid"
+            }
+        }, {
+            id: 2,
+            from: 'Hyderabad',
+            destination: 'Karnataka',
+            budget: 4500,
+            tripType: 'friends',
+            expenses: [{
+                name: "Car rental",
+                cost: 1500
+            }, {
+                name: "Hotel in Hampi",
+                cost: 1800
+            }, {
+                name: "Food & Fun",
+                cost: 1200
+            }],
+            details: {
+                hotel: {
+                    name: "Jungle Lodges & Resorts, Hampi",
+                    type: "Resort",
+                    image: "https://images.unsplash.com/photo-1621371510443-433c09f3ed1c?q=80&w=1770&auto=format&fit=crop",
+                    description: "Stay in a rustic cottage-style resort for an immersive experience near the ruins of Hampi.",
+                    timings: "Check-in: 1:00 PM | Check-out: 12:00 PM",
+                    phone: "91-999-999-9999"
+                },
+                history: {
+                    facts: [
+                        "Karnataka's history is rich with powerful empires like the Vijayanagara Empire, whose capital was Hampi.",
+                        "The region is home to many magnificent temples and is a center of ancient Indian culture."
+                    ],
+                    image: "https://images.unsplash.com/photo-1629851613944-8d4841e21b72?q=80&w=1632&auto=format&fit=crop"
+                },
+                transport: {
+                    options: [
+                        { name: "Train", icon: "fas fa-train", description: "Direct trains are available from Hyderabad to Hospet, near Hampi.", timings: "Approx. 15 hours", phone: "1800-234-5678" },
+                        { name: "Bus", icon: "fas fa-bus", description: "Many overnight buses connect Hyderabad to major cities in Karnataka.", timings: "Approx. 12 hours", phone: "987-654-3210" },
+                        { name: "Car", icon: "fas fa-car", description: "The most flexible option for visiting many temples.", timings: "Flexible", phone: "998-877-6655" }
+                    ]
+                },
+                suggestions: [
+                    { name: "Hampi Ruins", image: "https://images.unsplash.com/photo-1627914619379-373327d89196?q=80&w=1632&auto=format&fit=crop", description: "Explore the ancient and majestic ruins of the Vijayanagara Empire." },
+                    { name: "Vittala Temple", image: "https://images.unsplash.com/photo-1627914619379-373327d89196?q=80&w=1632&auto=format&fit=crop", description: "See the famous musical pillars at the Vittala Temple." },
+                    { name: "Virupaksha Temple", image: "https://images.unsplash.com/photo-1627914619379-373327d89196?q=80&w=1632&auto=format&fit=crop", description: "Visit the main temple in Hampi, still in use today." },
+                    { name: "Nandi Statue", image: "https://images.unsplash.com/photo-1627914619379-373327d89196?q=80&w=1632&auto=format&fit=crop", description: "See the massive monolithic statue of Nandi in the main market." }
+                ],
+                weather: "Pleasant and Sunny"
+            }
+        }, {
+            id: 3,
+            from: 'Hyderabad',
+            destination: 'Kerala',
+            budget: 6500,
+            tripType: 'solo',
+            expenses: [{
+                name: "Flight to Kochi",
+                cost: 2500
+            }, {
+                name: "Hotel in Munnar",
+                cost: 2000
+            }, {
+                name: "Bus & Taxis",
+                cost: 800
+            }, {
+                name: "Food & Activities",
+                cost: 1200
+            }],
+            details: {
+                hotel: {
+                    name: "The Leaf Munnar",
+                    type: "Hotel",
+                    image: "https://images.unsplash.com/photo-1618773959953-b09e6fd561c3?q=80&w=1770&auto=format&fit=crop",
+                    description: "A hotel with panoramic views of the tea plantations, offering a peaceful and scenic retreat.",
+                    timings: "Check-in: 1:00 PM | Check-out: 12:00 PM",
+                    phone: "91-999-999-9999"
+                },
+                history: {
+                    facts: [
+                        "Kerala, also known as 'God's Own Country,' has a long history of trade and cultural exchange with the Middle East and Europe.",
+                        "The state's rich history is a mix of ancient dynasties, colonial influence, and a unique culture shaped by its backwaters and coastal life."
+                    ],
+                    image: "https://images.unsplash.com/photo-1601004183181-79e5f58c4263?q=80&w=1770&auto=format&fit=crop"
+                },
+                transport: {
+                    options: [
+                        { name: "Flight", icon: "fas fa-plane", description: "Fly from Hyderabad to Kochi.", timings: "1:00 PM - 3:00 PM", phone: "123-456-7890" },
+                        { name: "Bus", icon: "fas fa-bus", description: "Buses are a great way to travel between Kerala's cities.", timings: "Various", phone: "987-654-3210" },
+                        { name: "Taxi/Rideshare", icon: "fas fa-taxi", description: "Taxis are widely available for local trips.", timings: "Flexible", phone: "998-877-6655" }
+                    ]
+                },
+                suggestions: [
+                    { name: "Munnar Tea Plantations", image: "https://images.unsplash.com/photo-1625902167198-a2898c11e74a?q=80&w=1770&auto=format&fit=crop", description: "Hike through the beautiful tea plantations and enjoy the cool weather." },
+                    { name: "Alleppey Backwaters", image: "https://images.unsplash.com/photo-1613149520448-93663a8a3064?q=80&w=1632&auto=format&fit=crop", description: "Take a houseboat tour and explore the famous backwaters." },
+                    { name: "Fort Kochi", image: "https://images.unsplash.com/photo-1627885448651-7f0d04d88e0e?q=80&w=1770&auto=format&fit=crop", description: "Visit the historic Fort Kochi to see colonial architecture and Chinese fishing nets." },
+                    { name: "Periyar National Park", image: "https://images.unsplash.com/photo-1549581898-35616f731a5c?q=80&w=1770&auto=format&fit=crop", description: "Go on a safari to spot wildlife like tigers and elephants." }
+                ],
+                weather: "Cool and Misty"
+            }
+        }];
+
+        // DOM elements
+        const tripsListSection = document.getElementById('my-trips');
+        const tripDetailsSection = document.getElementById('trip-details');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const planTripButton = document.getElementById('plan-trip-button');
+        const tripsList = document.getElementById('trips-list');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Functions
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        function createNewTrip() {
+            alert('This feature would create a new trip! Please check the "My Trips" section below to view pre-made trips for this demo.');
+        }
+
+        function renderTrips(filter = 'all') {
+            tripsList.innerHTML = '';
+            const filteredTrips = trips.filter(trip => filter === 'all' || trip.tripType === filter);
+
+            if (filteredTrips.length === 0) {
+                tripsList.innerHTML = `<p class="text-center text-gray-500">No trips of type "${filter}" planned yet.</p>`;
+                return;
+            }
+
+            filteredTrips.forEach(trip => {
+                const tripCard = document.createElement('div');
+                tripCard.className = 'bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center transform hover:scale-105 transition duration-300';
+                tripCard.innerHTML = `
+                    <i class="fas fa-map-marked-alt text-6xl gyg-orange-text mb-4"></i>
+                    <h3 class="text-2xl font-bold">${trip.from} to ${trip.destination}</h3>
+                    <p class="gyg-orange-text font-medium mt-2">Budget: ₹${trip.budget}</p>
+                    <button class="mt-4 gyg-orange-bg text-white px-6 py-2 rounded-full font-medium hover:gyg-orange-hover transition duration-300" onclick="showTripDetails(${trip.id})">View Details</button>
+                `;
+                tripsList.appendChild(tripCard);
+            });
+        }
+
+        function showTripDetails(tripId) {
+            const trip = trips.find(t => t.id === tripId);
+            if (!trip) {
+                alert('Trip not found.');
+                return;
+            }
+
+            document.querySelectorAll('main > section').forEach(section => section.classList.add('hidden'));
+            tripDetailsSection.classList.remove('hidden');
+
+            let weatherSuggestion = '';
+            if (trip.details.weather.includes('Hot') || trip.details.weather.includes('Sunny')) {
+                weatherSuggestion = `<p class="text-yellow-500 mt-2">⭐ **Tip:** The weather is hot! We suggest staying hydrated and visiting indoor attractions or a nearby beach.</p>`;
+            } else if (trip.details.weather.includes('Cool') || trip.details.weather.includes('Misty')) {
+                weatherSuggestion = `<p class="text-blue-500 mt-2">⭐ **Tip:** The weather is cool! This is perfect for outdoor activities like hiking or exploring tea plantations.</p>`;
+            }
+
+            let detailsHtml = `
+                <div class="flex items-center space-x-4 mb-8">
+                    <button onclick="goBackToMyTrips()" class="text-gray-600 hover:gyg-orange-text transition duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    </button>
+                    <h2 class="text-3xl md:text-4xl font-bold">Trip from ${trip.from} to ${trip.destination}</h2>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg mb-12">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-wallet mr-3 gyg-orange-text"></i>Trip Budget & Expenses</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-xl font-medium text-gray-500">Total Budget:</p>
+                            <p class="text-3xl font-bold gyg-orange-text">₹${trip.budget}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-medium text-gray-500">Expenses:</p>
+                            <ul class="list-disc list-inside text-gray-500">
+                                ${trip.expenses.map(expense => `<li>${expense.name}: ₹${expense.cost}</li>`).join('')}
+                            </ul>
+                            <p class="text-2xl font-bold text-red-500 mt-2">Total Spent: ₹${trip.expenses.reduce((sum, expense) => sum + expense.cost, 0)}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-hotel mr-3 gyg-orange-text"></i>Your Stay (${trip.details.hotel.type})</h3>
+                        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-inner">
+                            <img src="${trip.details.hotel.image}" alt="Hotel image for ${trip.details.hotel.name}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h4 class="text-xl font-semibold">${trip.details.hotel.name}</h4>
+                                <p class="text-gray-500 mt-1">${trip.details.hotel.description}</p>
+                                <p class="text-sm text-gray-400 mt-2">Timings: ${trip.details.hotel.timings} | Contact: <span class="gyg-orange-text font-semibold">${trip.details.hotel.phone}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-plane-departure mr-3 gyg-orange-text"></i>Transport Options</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            ${trip.details.transport.options.map(option => `
+                                <div class="flex flex-col items-center text-center p-4 bg-gray-100 rounded-lg">
+                                    <i class="${option.icon} text-3xl mb-2 gyg-orange-text"></i>
+                                    <h4 class="font-semibold">${option.name}</h4>
+                                    <p class="text-xs text-gray-500 mt-1">${option.description}</p>
+                                    <p class="text-xs text-gray-400 mt-1">Timings: ${option.timings}</p>
+                                    <p class="text-xs text-gray-400 mt-1">Contact: ${option.phone}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg mb-12">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-landmark mr-3 gyg-orange-text"></i>Historical Facts & Local Culture</h3>
+                    <div class="flex flex-col md:flex-row items-center md:space-x-6">
+                        <img src="${trip.details.history.image}" alt="Historical image" class="w-full md:w-1/2 h-auto rounded-xl shadow-md">
+                        <ul class="list-disc list-inside text-gray-500 mt-4 md:mt-0 md:w-1/2 space-y-2">
+                            ${Array.isArray(trip.details.history.facts) ? trip.details.history.facts.map(fact => `<li>${fact}</li>`).join('') : `<li>${trip.details.history.facts}</li>`}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-cloud-sun mr-3 gyg-orange-text"></i>Weather Forecast</h3>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-cloud text-5xl text-blue-500"></i>
+                            <p class="text-gray-500">${trip.details.weather}</p>
+                        </div>
+                        ${weatherSuggestion}
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-red-500">
+                        <h3 class="text-2xl font-bold text-red-500 mb-4 flex items-center"><i class="fas fa-exclamation-triangle mr-3"></i>Emergency Contacts</h3>
+                        <div class="space-y-2 text-gray-500">
+                            <p>Police: <span class="gyg-orange-text font-semibold">100</span></p>
+                            <p>Ambulance: <span class="gyg-orange-text font-semibold">102</span></p>
+                            <p>Fire: <span class="gyg-orange-text font-semibold">101</span></p>
+                            <p>Tourist Helpline: <span class="gyg-orange-text font-semibold">1800-11-1363</span></p>
+                            <p>General Hospital: <span class="gyg-orange-text font-semibold">0863-222-2222</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center space-x-4 mt-8">
+                    <button onclick="alert('This feature would download an offline PDF of your trip details. You can view this PDF even without an internet signal!')" class="gyg-orange-bg text-white font-bold py-3 px-8 rounded-full shadow-lg hover:gyg-orange-hover transition duration-300 transform hover:scale-105 mb-4">
+                        <i class="fas fa-file-pdf mr-2"></i> Download Offline PDF
+                    </button>
+                    <button onclick="alert('This feature would use a voice-activated AI to translate conversations in real-time, helping you communicate with locals without a language barrier!')" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-600 transition duration-300 transform hover:scale-105 mb-4">
+                        <i class="fas fa-microphone mr-2"></i> Voice Translator
+                    </button>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg mt-12">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-map-marker-alt mr-3 gyg-orange-text"></i>Suggested Places to Visit</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${trip.details.suggestions.map(suggestion => `
+                            <div class="bg-gray-100 rounded-xl overflow-hidden shadow-md">
+                                <img src="${suggestion.image}" alt="${suggestion.name}" class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <h4 class="text-xl font-semibold">${suggestion.name}</h4>
+                                    <p class="text-gray-500 mt-1">${suggestion.description}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            tripDetailsSection.innerHTML = detailsHtml;
+        }
+
+        function goBackToMyTrips() {
+            document.querySelectorAll('main > section:not(#trip-details)').forEach(section => section.classList.remove('hidden'));
+            tripDetailsSection.classList.add('hidden');
+        }
+
+        // Event Listeners
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        planTripButton.addEventListener('click', createNewTrip);
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('gyg-orange-bg', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                button.classList.remove('bg-gray-200', 'text-gray-700');
+                button.classList.add('gyg-orange-bg', 'text-white');
+                renderTrips(button.dataset.filter);
+            });
+        });
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTrips();
+        });
+    </script>
+</body>
+</html>
